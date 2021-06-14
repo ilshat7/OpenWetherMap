@@ -20,7 +20,7 @@ class WeatherTableViewController: UITableViewController {
     @IBOutlet weak var label4: UILabel!
     @IBOutlet weak var label5: UILabel!
     @IBOutlet weak var label6: UILabel!
-    
+    @IBOutlet weak var hourlyCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -29,11 +29,12 @@ class WeatherTableViewController: UITableViewController {
         GetForecast().forecastLoader{ weather in
             self.weather = weather
             self.tableView.reloadData()
+            self.hourlyCollectionView.reloadData()
             guard let weather = self.weather else {return}
             self.icon.image = UIImage(named: weather.current.weather[0].icon)
             self.descriptionLabel.text = weather.current.weather[0].description
-            self.currentTempLabel.text = "\(Int(round(weather.current.temp))) ºC"
-            self.feelsLikeLabel.text = "Ощющается как: \(Int(round(weather.current.feels_like))) ºC"
+            self.currentTempLabel.text = "\(lroundf(weather.current.temp)) ºC"
+            self.feelsLikeLabel.text = "Ощющается как: \(lroundf(weather.current.feels_like)) ºC"
             self.Label1.text = "Ветер: \(weather.current.wind_speed)м/с"
             self.Label2.text = "Влажность: \(weather.current.humidity)%"
             self.label3.text = "UV-индекс: \(weather.current.uvi)"
@@ -70,49 +71,32 @@ class WeatherTableViewController: UITableViewController {
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+
+}
+extension WeatherTableViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return weather?.hourly.count ?? 0
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hourly", for: indexPath) as! HourlyCollectionViewCell
+        if let hourlyWeather = weather?.hourly[indexPath.row] {
+            
+            let hour = Date(timeIntervalSince1970: TimeInterval(hourlyWeather.dt))
+            let hourFormatter = DateFormatter()
+            hourFormatter.dateFormat = "HH:mm"
+            cell.hourLabel.text = hourFormatter.string(from: hour)
+            
+            let date = Date(timeIntervalSince1970: TimeInterval(hourlyWeather.dt))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM"
+            cell.dateLabel.text = dateFormatter.string(from: date)
+            cell.tempLabel.text = "\(lroundf(hourlyWeather.temp))ºC"
+            cell.icon.image = UIImage(named: hourlyWeather.weather[0].icon)
+        }
+        return cell
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

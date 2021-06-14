@@ -39,10 +39,10 @@ class ShowDetailTableViewController: UITableViewController {
         dateLabel.text = day
         icon.image = UIImage(named: "\(data.weather[0].icon)")
         descryptionLabel.text = data.weather[0].description
-        mornLabel.text = "\(Int(data.temp.morn.rounded()))"
-        dayLabel.text = "\(Int(data.temp.day.rounded()))"
-        eveLabel.text = "\(Int(data.temp.eve.rounded()))"
-        nightLabel.text = "\(Int(data.temp.night.rounded()))"
+        mornLabel.text = "\(lroundf(data.temp.morn))"
+        dayLabel.text = "\(lroundf(data.temp.day))"
+        eveLabel.text = "\(lroundf(data.temp.eve))"
+        nightLabel.text = "\(lroundf(data.temp.night))"
         label1.text = "Давление: \(data.pressure)hPa"
         label2.text = "Влажность: \(data.humidity)%"
         label3.text = "Вероятность выпадения осадков: \(data.pop)"

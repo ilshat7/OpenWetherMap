@@ -29,7 +29,7 @@ class WeatherTableViewCell: UITableViewCell {
         let day = dayFormat.string(from: date)
         dayLabel.text = "\(day)"
         
-        tempLabel.text = "\(Int(round(data.temp.max)))/\(Int(round(data.temp.min)))ºC"
+        tempLabel.text = "\(lroundf(data.temp.max))/\(lroundf(data.temp.min))ºC"
         
         icon.image = UIImage(named: "\(data.weather[0].icon)")
     }

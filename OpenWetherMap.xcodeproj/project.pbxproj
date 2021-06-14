@@ -17,6 +17,7 @@
 		3B01502E2675E4FF004383F5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B01502C2675E4EC004383F5 /* Alamofire.framework */; };
 		3B01502F2675E4FF004383F5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B01502C2675E4EC004383F5 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B4325542676762C0008BAAC /* ShowDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4325532676762C0008BAAC /* ShowDetailTableViewController.swift */; };
+		3B43255726775BA80008BAAC /* HourlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B43255626775BA80008BAAC /* HourlyCollectionViewCell.swift */; };
 		3BB3F288267631D300CE374E /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F287267631D300CE374E /* WeatherTableViewController.swift */; };
 		3BB3F28A2676321300CE374E /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3F2892676321300CE374E /* WeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		3B0150252675E4D2004383F5 /* GetForecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetForecast.swift; sourceTree = "<group>"; };
 		3B0150272675E4EC004383F5 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		3B4325532676762C0008BAAC /* ShowDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailTableViewController.swift; sourceTree = "<group>"; };
+		3B43255626775BA80008BAAC /* HourlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3BB3F287267631D300CE374E /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		3BB3F2892676321300CE374E /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				3BB3F287267631D300CE374E /* WeatherTableViewController.swift */,
 				3B0150252675E4D2004383F5 /* GetForecast.swift */,
 				3B0150152675D700004383F5 /* Main.storyboard */,
+				3B43255626775BA80008BAAC /* HourlyCollectionViewCell.swift */,
 				3B4325532676762C0008BAAC /* ShowDetailTableViewController.swift */,
 				3BB3F2892676321300CE374E /* WeatherTableViewCell.swift */,
 				3B0150182675D701004383F5 /* Assets.xcassets */,
@@ -214,6 +217,7 @@
 				3BB3F28A2676321300CE374E /* WeatherTableViewCell.swift in Sources */,
 				3B4325542676762C0008BAAC /* ShowDetailTableViewController.swift in Sources */,
 				3B0150262675E4D2004383F5 /* GetForecast.swift in Sources */,
+				3B43255726775BA80008BAAC /* HourlyCollectionViewCell.swift in Sources */,
 				3BB3F288267631D300CE374E /* WeatherTableViewController.swift in Sources */,
 				3B0150102675D700004383F5 /* AppDelegate.swift in Sources */,
 				3B0150122675D700004383F5 /* SceneDelegate.swift in Sources */,
