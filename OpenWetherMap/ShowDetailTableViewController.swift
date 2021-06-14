@@ -48,18 +48,19 @@ class ShowDetailTableViewController: UITableViewController {
         label3.text = "Вероятность выпадения осадков: \(data.pop)"
         label4.text = "Облачность: \(data.clouds)%"
         label5.text = "УФ-индекс: \(data.uvi)"
-        Label8.text = "Скорость ветра \(data.wind_speed)м/с"
+        label6.text = "Скорость ветра \(data.wind_speed)м/с"
+        
         let sunrise = Date(timeIntervalSince1970: TimeInterval(data.sunrise))
         let sunriseFormatter = DateFormatter()
         sunriseFormatter.dateFormat = "HH:mm"
         
-        label6.text = "Восход солнца: \(sunriseFormatter.string(from: sunrise))"
+        label7.text = "Восход солнца: \(sunriseFormatter.string(from: sunrise))"
         
         let sunset = Date(timeIntervalSince1970: TimeInterval(data.sunset))
         let sunsetFormatter = DateFormatter()
         sunsetFormatter.dateFormat = "HH:mm"
         
-        label7.text = "Закат солнца: \(sunsetFormatter.string(from: sunset))"
+        Label8.text = "Закат солнца: \(sunsetFormatter.string(from: sunset))"
     }
 
     // MARK: - Table view data source

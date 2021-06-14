@@ -50,6 +50,7 @@ class WeatherTableViewController: UITableViewController {
         guard let showVC = segue.destination as? ShowDetailTableViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         showVC.data = weather?.daily[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     // MARK: - Table view data source
@@ -69,9 +70,7 @@ class WeatherTableViewController: UITableViewController {
         cell.setCell(data: weather!.daily[indexPath.row])
 
         return cell
-    }
-
-    
+    }   
 
 }
 extension WeatherTableViewController: UICollectionViewDataSource {
