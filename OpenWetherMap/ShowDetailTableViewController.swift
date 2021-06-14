@@ -25,7 +25,8 @@ class ShowDetailTableViewController: UITableViewController {
     @IBOutlet weak var label5: UILabel!
     @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var label7: UILabel!
-
+    @IBOutlet weak var Label8: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let data = data else { return }
@@ -42,12 +43,12 @@ class ShowDetailTableViewController: UITableViewController {
         dayLabel.text = "\(Int(data.temp.day.rounded()))"
         eveLabel.text = "\(Int(data.temp.eve.rounded()))"
         nightLabel.text = "\(Int(data.temp.night.rounded()))"
-        label1.text = "Давление: \(data.pressure)"
-        label2.text = "Влажность: \(data.humidity)"
-        label3.text = "Вероятность осадков: \(data.pop)"
-        label4.text = "Облачность: \(data.clouds)"
+        label1.text = "Давление: \(data.pressure)hPa"
+        label2.text = "Влажность: \(data.humidity)%"
+        label3.text = "Вероятность выпадения осадков: \(data.pop)"
+        label4.text = "Облачность: \(data.clouds)%"
         label5.text = "УФ-индекс: \(data.uvi)"
-        
+        Label8.text = "Скорость ветра \(data.wind_speed)м/с"
         let sunrise = Date(timeIntervalSince1970: TimeInterval(data.sunrise))
         let sunriseFormatter = DateFormatter()
         sunriseFormatter.dateFormat = "HH:mm"
@@ -70,7 +71,7 @@ class ShowDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return 8
     }
 
 }

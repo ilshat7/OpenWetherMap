@@ -9,13 +9,40 @@ import UIKit
 
 class WeatherTableViewController: UITableViewController {
     var weather: WeatherStruct?
+    
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var Label1: UILabel!
+    @IBOutlet weak var Label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GetForecast().forecastLoader{ weather in
             self.weather = weather
             self.tableView.reloadData()
+            guard let weather = self.weather else {return}
+            self.icon.image = UIImage(named: weather.current.weather[0].icon)
+            self.descriptionLabel.text = weather.current.weather[0].description
+            self.currentTempLabel.text = "\(Int(round(weather.current.temp))) ºC"
+            self.feelsLikeLabel.text = "Ощющается как: \(Int(round(weather.current.feels_like))) ºC"
+            self.Label1.text = "Ветер: \(weather.current.wind_speed)м/с"
+            self.Label2.text = "Влажность: \(weather.current.humidity)%"
+            self.label3.text = "UV-индекс: \(weather.current.uvi)"
+            self.label4.text = "Давление: \(weather.current.pressure)hPa"
+            self.label5.text = "Видимость: \(weather.current.visibility)км"
+            self.label6.text = "Облачность: \(weather.current.clouds)"
         }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

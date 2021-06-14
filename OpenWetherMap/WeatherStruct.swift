@@ -46,6 +46,7 @@ struct Daily: Decodable {
     var clouds: Int
     var pop: Float
     var uvi: Float
+    var wind_speed: Float
 }
 
 struct Weather: Decodable {
