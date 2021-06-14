@@ -9,9 +9,8 @@ import Foundation
 
 struct WeatherStruct: Decodable {
     var current: Current
-    var hourly: Hourly
-    var daily: Daily
-    var alerts: String
+    var hourly: [Hourly]
+    var daily: [Daily]
 }
 
 struct Current: Decodable {
@@ -45,7 +44,7 @@ struct Daily: Decodable {
     var humidity: Int
     var weather: [Weather]
     var clouds: Int
-    var pop: Int
+    var pop: Float
     var uvi: Float
 }
 
